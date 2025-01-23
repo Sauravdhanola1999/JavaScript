@@ -77,8 +77,8 @@ function outer() {
 // They are not subject to the Temporal Dead Zone.
 // They are accessible only after their declaration and assignment
 
-// the period in the execution of a JavaScript program where a variable exists but cannot be accessed. 
-// This occurs during the time between the creation of a variable and the point where it is declared
+// the period in the execution of a JavaScript program where a variable exists but cannot be accessed (TD)
+// This occurs during the time between the creation of a variable and the point where it is declared.
 
 // var: function scoped or globally scoped. can be redeclared and updated and hoisted and initialized with undefined 
 //let : block scoped. Hoisted but not initialzed(TDZ). cannot be redeclared but can be updated.
@@ -96,8 +96,8 @@ console.log(z); // ReferenceError (block scoped)
 
 // Variable scope in JavaScript refers to the context in which a variable is defined and determines where it can be accessed or modified in your code
 // In js there ar two types of scopes ..
-// Global Scope: variable declared outside any function or block
-// local Scope: variable declared inside a function or block
+// Global Scope: variable declared outside any function or block and can be accessed from anywhere, include inside functions.
+// local Scope: variable declared inside a function or block. Only accessible within that function or block
 // JavaScript uses lexical Scoping, which means the inner function can access the variable of outer function.
 
 function functionScopeExample() {
@@ -108,8 +108,20 @@ function functionScopeExample() {
   functionScopeExample();
   // console.log(functionScopedVar); // ReferenceError: functionScopedVar is not defined
 
-//   Variables declared with var inside a function are function-scoped.
+// Variables declared with var inside a function are function-scoped.
 // They are accessible only within the function in which they are defined and are not visible outside of it.
 // Function scope does not apply to let and const, as they are block-scoped
+
+// Why is Scope Important?
+// Avoids Polluting the Global Namespace: Helps prevent variable name conflicts.
+// Improves Code Readability: Keeps variables relevant to the area of the program where they are needed.
+// Reduces Bugs: Avoids unintended variable overwrites.
+
+// Feature	Global Variable vs	Local Variable
+// Declaration   	Outside any function or block	     Inside a function or block
+// Scope	   Accessible throughout the program	  Accessible only within its function/block
+// Lifetime   	Exists as long as the program runs	   Exists only during function/block execution
+// Accessibility    	Accessible from any function or block  	Not accessible outside its scope
+// Usage Concerns   	Prone to conflicts and hard to debug	  Safer and easier to debug
 
 
