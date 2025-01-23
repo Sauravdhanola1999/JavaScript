@@ -98,4 +98,18 @@ console.log(z); // ReferenceError (block scoped)
 // In js there ar two types of scopes ..
 // Global Scope: variable declared outside any function or block
 // local Scope: variable declared inside a function or block
+// JavaScript uses lexical Scoping, which means the inner function can access the variable of outer function.
+
+function functionScopeExample() {
+    var functionScopedVar = "I am function scoped";
+    console.log(functionScopedVar); // Accessible inside the function
+  }
+  
+  functionScopeExample();
+  // console.log(functionScopedVar); // ReferenceError: functionScopedVar is not defined
+
+//   Variables declared with var inside a function are function-scoped.
+// They are accessible only within the function in which they are defined and are not visible outside of it.
+// Function scope does not apply to let and const, as they are block-scoped
+
 
