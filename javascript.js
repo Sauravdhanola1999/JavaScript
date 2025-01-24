@@ -97,7 +97,8 @@ console.log(z); // ReferenceError (block scoped)
 // Variable scope in JavaScript refers to the context in which a variable is defined and determines where it can be accessed or modified in your code
 // In js there ar two types of scopes ..
 // Global Scope: variable declared outside any function or block and can be accessed from anywhere, include inside functions.
-// local Scope: variable declared inside a function or block. Only accessible within that function or block
+// local Scope: variable declared inside a function or block. Only accessible within that function or block 
+// (stored in separate memory space which are reserved for this use Block)
 // JavaScript uses lexical Scoping, which means the inner function can access the variable of outer function.
 
 function functionScopeExample() {
@@ -123,5 +124,39 @@ function functionScopeExample() {
 // Lifetime   	Exists as long as the program runs	   Exists only during function/block execution
 // Accessibility    	Accessible from any function or block  	Not accessible outside its scope
 // Usage Concerns   	Prone to conflicts and hard to debug	  Safer and easier to debug
+
+
+//shadowing occurs when a variable declared within a certain scope has the same name as a varibale declared in an outer scope. 
+// The Inner variable shadows the outer variable,meanining the outer variable is not accessible within the inner scope.
+
+//Illegal Shadowing haapens when this behavior violets the rules of scope resolution in JavaScript,
+// espeically in let, const and var declarations
+
+let x = 10;
+{
+    var x = 20; // Illegal shadowing in the same scope
+    console.log(x);  
+}
+// SyntaxError: Identifier 'x' has already been declared
+
+
+let x = 10;
+
+{
+    let x = 20; // Legal shadowing
+    console.log(x); // Prints 20
+}
+
+console.log(x); // Prints 10
+
+let y = 30;
+
+function testShadow() {
+    var y = 40; // Legal shadowing, different scopes
+    console.log(y); // Prints 40
+}
+
+testShadow();
+console.log(y); // Prints 30
 
 
