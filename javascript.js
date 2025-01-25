@@ -272,4 +272,108 @@ function add(a){
 // cannot access the value which from outside the iife
 
 
+//different ways to loop through an array in javaScript
+//forloop
+//forEach
+//map
+//while
+//dowhile
+
+const fruits = ["apple", "banana", "cherry", "date", "elderberry"];
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+
+for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}
+
+fruits.forEach((fruit)=>{
+  console.log(fruit);
+})
+
+
+// for...in loop
+// Purpose: Iterates over the enumerable properties (keys) of an object.
+// Works on: Objects and arrays (but typically used for objects).
+// Behavior:
+// It loops through the keys (property names) of an object.
+// For arrays, it iterates over the indices (as strings).
+
+const obj = { a: 1, b: 2, c: 3 };
+for (const key in obj) {
+  console.log(key, obj[key]); // Outputs: a 1, b 2, c 3
+}
+
+const arr = [10, 20, 30];
+for (const index in arr) {
+  console.log(index, arr[index]); // Outputs: 0 10, 1 20, 2 30
+}
+
+
+// for...of loop
+// Purpose: Iterates over the values of an iterable object.
+// Works on: Iterables like arrays, strings, Maps, Sets, and more.
+// Behavior:
+// It loops through the values directly, not the keys or indices.
+
+const arr = [10, 20, 30];
+for (const value of arr) {
+  console.log(value); // Outputs: 10, 20, 30
+}
+
+const str = "hello";
+for (const char of str) {
+  console.log(char); // Outputs: h, e, l, l, o
+}
+
+
+//how to add remove or delete elements from an array in jaavscript
+
+const vegetables = ["carrot", "beetroot", "potato", "cabbage"];
+
+vegetables.push("spinach"); // Add elements to the end of an array 
+vegetables.unshift("Apple"); // Add elements to the beginning of an array
+
+vegetables.pop("cabbage"); // Remove the last element of an array
+vegetables.shift("carrot"); // Remove the first element of an array
+
+vegetables.splice(1, 0, 'kiwi'); //Add elements at a specific index
+vegetables.splice(2, 1); // Remove elements at a specific index
+
+// array.splice(start, deleteCount, item1, item2, ...);
+// The splice() method modifies the original array.
+// It can be used for removal, addition, or replacement of elements.
+// Negative start values count from the end of the array.
+// The returned array contains the elements that were removed (if any).
+
+//Map:- it is a HOF that iterates over each element of an array, allowing us to apply a specified function to each element.
+// Does not modify the original array but returns a transformed array based on the logic provided
+// map returns a new array of same length as original
+// It is commonly used to transform or process data
+
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(num => num * 2);
+console.log(doubled); // Output: [2, 4, 6, 8]
+
+//Filter: Filter elements based on a condition and returns a new array with the elements that pass the condition
+// the length of the returned array may be different from the original array
+
+
+const numbers = [1, 2, 3, 4, 5];
+
+// Example: Filtering even numbers
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
+
+// Reduce: reduces an array to a single value 
+// it iterates over each element of an array and accumulates the results based on the logic provided in the callback
+// the accumulator stores the final result of the reduce operation
+
+const numbers = [1, 2, 3, 4, 5];
+
+// Find the average using `reduce`
+const average = numbers.reduce((sum, num, index, array) => sum + num / array.length, 0);
+console.log(average); // Output: 3
 
