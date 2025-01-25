@@ -260,3 +260,16 @@ function add(a){
   return total; // returns value depends on external state
 }
 
+//An IIFE is a JavaScript Function that runs as soon as it is defined. 
+// It is also known as a self-executing anonymous function
+//They are typically used to create a local scope for variables to prevent them from polluting the global scope
+
+(
+  function greet(){
+      console.log("Hello!")
+  }
+)();
+// cannot access the value which from outside the iife
+
+
+
