@@ -50,7 +50,7 @@ var sayHello = function() {
   console.log("Hello from expression!");
 };
 
-// Function expressions are not hoisted. Calling sayHello before its assignment results in a TypeError
+// Function expressions are not hoisted(tdz). Calling sayHello before its assignment results in a TypeError
 
 
 // Hoisting Behavior:
@@ -67,7 +67,7 @@ function outer() {
   
   outer();
 
-//   TDZ for let and const: Variables declared with let and const are hoisted, but they exist in a "dead zone" before their actual declaration. 
+//  TDZ for let and const: Variables declared with let and const are hoisted, but they exist in a "dead zone" before their actual declaration. 
 //   Attempting to access them within this zone throws a ReferenceError. This is to prevent accidental usage of variables before they are properly initialized
 
 // Function Expressions: Since they are not hoisted, they are simply not accessible before their declaration. 
@@ -159,4 +159,104 @@ function testShadow() {
 testShadow();
 console.log(y); // Prints 30
 
+// Closure in JavaScript
+// The combination of function bundled together (encloses) with references to its sorrounding state (the lexical environment);
+// In other words, a closure gives us access to its outerscope, and closure is created everytime a function is created, at function careation time
+function x(){
+  let a=7;
+  function y(){
+    console.log(a)
+  }
+  return y;
+}
+let z= x();
+console.log(z);
+z();
+
+//used in event handles, callbacks, timeouts, promises, and async functions
+
+function attachClickHandler(buttonId, message) {
+  document.getElementById(buttonId).addEventListener('click', function () {
+    console.log(message); // Closure keeps `message` accessible
+  });
+}
+
+// Attaching click handlers with unique messages
+attachClickHandler('btn1', 'Button 1 clicked!');
+attachClickHandler('btn2', 'Button 2 clicked!');
+
+
+//functions are block of code designed to perform a specific task. iT is reusable piece of code that can be called multiple times with different inputs (arguments)
+//to produce different ouputs
+
+//Function Statement (also called a function declaration) defines a named function, can be hoisted and can be called before declaration
+function greet(){
+  console.log("JHell");
+}
+greet();
+
+//Function expression: Assigned to variable, not hoisted; cannot be called before declaration
+//function expresion  are not hoisted so, they can be only used after assignment 
+// functin expression can be named and anonymous
+const g = function(){
+  console.log("Hello");
+}
+g();
+
+//anonymous can be used in contexts like callbacks, IIFE, and event handlers;
+
+//named function expression is function expression with a name;
+// named function expression is useful for self-referencing, recursion, and debugging;
+
+const greet = function geet(){
+  console.log("Hello");
+}
+greet();
+
+
+const factorial = function fact(n){
+  if(n===0){
+      return 1;
+  }
+  else {
+      return n*fact(n-1);
+  }
+}
+console.log(factorial(5));
+
+// paramter vs arguments
+// variable listed in the function definition are called parameters
+//actual values that are passed to the function are called arguments when it is called
+
+// First class Functions
+// function can be assigned to a variable, passed as an argument to another functionScopeExample, returned from another function
+
+//Example and we can take the map, filter and reduce also
+function createMultiplier(multiplier) {
+  return function (value) {
+    return value * multiplier;
+  };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+
+//use cases Event Handlers, Callbacks, Promises, and Async Functions also in middlware in express.js
+
+// Pure Functions are functions that always produce the same output for the same input, and they do not have any side effects
+//Does not rely on external state, Make code more predictable and easier to test
+function add(a, b) {
+  return a+b; //deterministic and no side effects
+}
+
+// Impure Functions: Functions that produce different outputs for the same input or have side effects are considered impure
+
+let total =0;
+function add(a){
+  total +=a; // modifies external variable 'total'
+  return total; // returns value depends on external state
+}
 

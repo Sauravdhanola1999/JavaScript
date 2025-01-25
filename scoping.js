@@ -1,6 +1,7 @@
-var x = 10;
+console.log(sayHello); // undefined (variable is hoisted but uninitialized)
+var sayHello = function () {
+  console.log('Hello!');
+};
+sayHello(); // Works now
 
-{
-    let x = 20; // Illegal shadowing in the same scope
-    console.log(x);
-}
+
