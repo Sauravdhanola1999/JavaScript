@@ -418,10 +418,17 @@ console.log(allEven); // Output: false
 
 // getElementById: Selects a single element by its ID attribute.
 const divById = document.getElementById('container');
-// getElementsByClassName: Selects multiple elements by their class attribute.
+// getElementsByClassName: Selects multiple elements by their class attribute. returns a live HTML collection
 const elementsByClass = document.getElementsByClassName('myClass');
- // getElementsByTagName: Selects multiple elements by their tag name.
+ // getElementsByTagName: Selects multiple elements by their tag name. returns a live HTML collection
  const paragraphs = document.getElementsByTagName('p');
+// using querySelector: Selects a single element using a CSS selector returns the first matching element
+const paragraph = document.querySelector('#container');
+// using querySelctorAll: Selects multiple elements using a CSS selector. returns a static NodeList
+const allParagraphs = document.querySelectorAll('p');
 
- 
+
+
+
+
 
