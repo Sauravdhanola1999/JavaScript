@@ -377,3 +377,51 @@ const numbers = [1, 2, 3, 4, 5];
 const average = numbers.reduce((sum, num, index, array) => sum + num / array.length, 0);
 console.log(average); // Output: 3
 
+
+//filter vs find 
+// filter returns Array of all matching elements, Iterates through the entire array	
+// find returns the first matching element, Stops after the first match
+// filter  Returns an empty array [] if no match is found
+// find returns undefined if no match is found
+// usecase : filter is used when multiple matches are needed, find is used when only the first match is need;
+
+// some vs every
+// some returns true if atleast one element matches the condition, Stops after the first match
+// every returns true if all elements match the condition, Stops at the first non-match
+// some returns false if no match is found
+// every returns true if the array is empty
+// usecase: some is used when To check if any element satisfies a condition
+//usecase: every is used when to check if all elements satisfy a condition
+
+//Both methods are efficient because they stop iterating as soon as the result is determined.
+
+const numbers = [1, 2, 3, 4, 5];
+
+// Check if at least one number is greater than 4
+const hasGreaterThanFour = numbers.some(num => num > 4);
+console.log(hasGreaterThanFour); // Output: true
+
+// Check if all numbers are less than 10
+const allLessThanTen = numbers.every(num => num < 10);
+console.log(allLessThanTen); // Output: true
+
+// Check if all numbers are even
+const allEven = numbers.every(num => num % 2 === 0);
+console.log(allEven); // Output: false
+
+
+// Select Elements in the DOM
+
+<div id="conatiner" class="myClass">
+  <p>This is My First Paragraph</p>
+</div>
+
+// getElementById: Selects a single element by its ID attribute.
+const divById = document.getElementById('container');
+// getElementsByClassName: Selects multiple elements by their class attribute.
+const elementsByClass = document.getElementsByClassName('myClass');
+ // getElementsByTagName: Selects multiple elements by their tag name.
+ const paragraphs = document.getElementsByTagName('p');
+
+ 
+
