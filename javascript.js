@@ -452,6 +452,27 @@ const existingDiv = document.getElementById('existingDiv');
 existingDiv.insertAdjacentElement('beforeend', '<p>Insert Using insertAdjacentElement</p>');
 
 
+// Explain difference between innerHTML and textContent
+//innerHTML parses content as HTML, textContent does not
+//InnerHtML can be slower and less secure (risk of XSS attacks);
+//textContent id genrally faster and safter 
+// innerHtml returns all content, including script and style element content
+//textContent returns the text content of all elements, ignoring tags
+
+
+const div = document.createElement('div');
+
+//innerHTML interprets the content as HTML
+div.innerHTML = '<p> This is <strong>bold</strong> text </p>';
+console.log(div.innerHTML);
+// "'<p> This is <strong>bold</strong> text </p>';
+
+//textContent treats the content as plain text
+ div.textContent = '<p> This is <strong>bold</strong> text </p>';
+ console.log(div.textContent);
+// "'<p> This is <strong>bold</strong> text </p>';
+
+
 
 
 
