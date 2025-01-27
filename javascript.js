@@ -428,6 +428,31 @@ const paragraph = document.querySelector('#container');
 const allParagraphs = document.querySelectorAll('p');
 
 
+// how to create and append elements to the DOM?
+const newParagraph = document.createElement('p');
+
+// set its content 
+newParagraph.textContent = 'this is a new Paragraph'
+
+// Add some attributes 
+newParagraph.id = 'newPara';
+newParagraph.className = 'highLight';
+
+// create a text Node
+const textNode = document.createTextNode('Additonal text.');
+
+// append the text node to the paragraph 
+newParagraph.appendChild(textNode);
+
+// append new paragraph to an exsisting element(e.g body);
+document.body.appendChild(newParagraph);
+
+// alternative method using insertAdjacentHTML
+const existingDiv = document.getElementById('existingDiv');
+existingDiv.insertAdjacentElement('beforeend', '<p>Insert Using insertAdjacentElement</p>');
+
+
+
 
 
 
