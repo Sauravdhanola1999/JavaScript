@@ -493,11 +493,31 @@ document.getElementById("parent").innerHTML = "";
 
 //Note: when removing elements, be sure to remove any associated event listeners
 // to prevent memory leaks 
+ 
 
+// Arrow Functions vs Normal Functions
+// Arrow Functions:
+// Syntax: const functionName = (parameters) => { /* code */ }
+// No this binding: Arrow functions do not have their own this context. They inherit this from the surrounding context.
+// Concise: More compact syntax, especially for single-expression functions.
+// Implicit return: If there’s a single expression, it can return the result directly without the return keyword.
+const sum = (a, b) => a + b;
+// No arguments object: Arrow functions do not have their own arguments object. They inherit it from the outer function.
 
+// Normal Functions :
+// Syntax: function functionName(parameters) { /* code */ }
+// this binding: Normal functions have their own this context, which can change depending on how the function is called (e.g., as a method, constructor, etc.).
+// Verbose: Requires a more traditional syntax with explicit return statements if there is more than one expression.
+function sum(a, b) {
+  return a + b;
+}
+// Has its own arguments object: Normal functions have their own arguments object that can be accessed within the function
 
-
-
-
-
+// Key Differences:-
+// this: Arrow functions don't have their own this; they inherit it from the surrounding context, whereas normal functions have their own this context.
+// Syntax: Arrow functions offer a shorter and more concise syntax.
+// arguments: Arrow functions do not have an arguments object, while normal functions do.
+// Use Case:
+// Arrow Functions are ideal for short, simple functions (like callbacks or inline functions), especially when you need to preserve the this context from the surrounding scope.
+// Normal Functions are better when you need a function to have its own this context, or if you need to work with the arguments object.
 
