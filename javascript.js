@@ -473,6 +473,29 @@ console.log(div.innerHTML);
 // "'<p> This is <strong>bold</strong> text </p>';
 
 
+// remove example
+
+{/* <div id="parent">
+  <p id="child">REMOVE ME</p>
+</div> */}
+
+//remove child
+const p = document.getElementById('parent');
+const c = document.getElementById('child');
+p.removeChild(c);
+
+//using remove support less in older browser
+const elementtobeRemoved = document.getElementById("child");
+elementtobeRemoved.remove();
+
+// setting innerHTML to an empty string (removes all children)
+document.getElementById("parent").innerHTML = "";
+
+//Note: when removing elements, be sure to remove any associated event listeners
+// to prevent memory leaks 
+
+
+
 
 
 
