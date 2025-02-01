@@ -521,3 +521,318 @@ function sum(a, b) {
 // Arrow Functions are ideal for short, simple functions (like callbacks or inline functions), especially when you need to preserve the this context from the surrounding scope.
 // Normal Functions are better when you need a function to have its own this context, or if you need to work with the arguments object.
 
+// Destructuring is a way to extract multiple values from data store in objects and arrays
+//Object deStructring
+
+
+const person = {name: "Alice", age: 30, city: "New York"};
+
+console.log(person.name);
+
+person.name = "saurav";
+
+console.log(person);
+//Destructure
+const {name, age, city} = person;
+console.log(name, age, city);
+
+const colors = ["red", "yellow", "black", "white"];
+
+const [first, second, third, fourth] = colors;
+console.log(first, second);
+
+
+//template literals
+// these are string literals that allow embedded expressions and multiline strings
+// allowing for multi-line strings, string interpolation with embedded expressions, and special constructs called tagged templates
+
+// spread operator (...) in JavaScript is used to create shallow copies, merge objects, or 
+// expand iterable elements. When updating an object immutably, 
+// we use the spread operator to create a new object instead of modifying the original one
+
+// Why Use Spread Operator?
+// ✔ Creates a new object instead of mutating the original
+// ✔ Maintains immutability (useful in React & Redux)
+// ✔ Merges and updates objects in a clean and concise way
+
+const users = [
+  { id: 1, name: "Alice", age: 30 },
+  { id: 2, name: "Bob", age: 25 }
+];
+
+// Update Alice's name to "Charlie"
+const updatedUsers = users.map(user =>
+  user.id === 1 ? { ...user, name: "Charlie" } : user
+);
+
+console.log(updatedUsers);
+/* Output:
+[
+  { id: 1, name: "Charlie", age: 30 },
+  { id: 2, name: "Bob", age: 25 }
+]
+*/
+
+// spreading array 
+const arr1 = [1, 2,3,4];
+const arr2 = [5, 6,7,8];
+const combine = [...arr1, ...arr2];
+console.log(combine); // [1,2,3,4,5,6,7,8];
+
+// spreading objects
+const obj1 = {a:1, b:2};
+const obj2 = {c:3, d:4};
+const mergeObject = {...obj1, ...obj2};
+console.log(mergeObject); //
+
+
+//copying array 
+const original = [1,2,3];
+const copy = [...original];
+copy.push(4);
+console.log(copy);
+
+//spreading strings
+const str = "Hello";
+const chars = [...str];
+console.log(chars);
+
+
+// default parameters in ES6
+
+// default parameters allows us to set default value for function parameters if no value or undefined is passed
+
+function greet(name="guest"){
+  console.log(`Hello ${name}`);
+};
+
+greet();
+greet("Saurv");
+
+//the rest parameter syntax allow a function  to accept an indefinite number of arguments as arrays
+
+function sum(...numbers){
+  return numbers.reduce((acc, n)=> acc + n,0);
+}
+console.log(sum(1,3,4,5,6,7,));
+
+
+function multiply(m, ...n){
+  return n.map(number=>m*number);
+}
+
+console.log(multiply(2,1,2,3,4,5));
+
+const {a, b, ...rest} = {a:1, b:2, c:3, d:4};
+console.log(a, b, rest);
+
+//CallBack & Callback Hell
+// callbacks are function passed as an argument to another function and is executed after the completion of main fuction
+
+function greet(){
+  console.log("Hello");
+}
+
+setTimeout(greet, 3000);
+
+//advantages of callbacks
+// it allows us to handle asynchronous operations 
+// by wrapping code that needs tp execute later
+
+// Callback Hell occurs when multiple nested callbacks make code harder to read and maintain
+// nested callbacks lead to pyramid structre known as pyramid of doom make the code complex
+
+//Inversion of control
+// By passing callbacks to other functions, developers lose control og the execution flow,
+// relying on the external function
+
+//Using callback in nesting leads to callback hell and inversion of control 
+
+
+function step1(callback) {
+  setTimeout(() => {
+    console.log("step 1");
+    callback();
+  }, 3000);
+}
+function step2(callback) {
+  setTimeout(() => {
+    console.log("step 2");
+    callback();
+  }, 3000);
+}
+function step3(callback) {
+  setTimeout(() => {
+    console.log("step 3");
+    callback();
+  }, 3000);
+}
+
+function step4(callback) {
+  setTimeout(() => {
+    console.log("step 4");
+    callback();
+  }, 3000);
+}
+
+step1(() => {
+  step2(() => {
+    step3(() => {
+      step4(() => {
+        console.log("Done");
+      });
+    });
+  });
+});
+
+
+//Promise 
+// A promise is an object representing the eventual completion or failure of an asynchronous operations
+//  Instead of passing callbacks into a function,
+// we attach .then() and .catch() to the returned Promise object
+
+function fetchData() {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      const success = true;
+      if (success) {
+        res("Data Fetched");
+      } else {
+        rej("Error");
+      }
+    }, 2000);
+  });
+}
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+
+//   ✔ Readable & Maintainable
+// ✔ Handles Errors Properly
+// ✔ No Deep Nesting!
+
+
+// Promise chaining allows you to execute multiple asynchronous operations sequentially by 
+// returning a Promise from each .then()
+//It is a powerful feature of JavaScript promises that helps you manage multiple operations, 
+// making your code more readable and easier to maintain
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Step 1: Data fetched");
+      resolve("User Data");
+    }, 1000);
+  });
+}
+
+function processUserData(data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(`Step 2: Processing ${data}`);
+      resolve("Processed Data");
+    }, 1000);
+  });
+}
+
+function saveToDatabase(data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(`Step 3: Saving ${data} to DB`);
+      resolve("Database Entry Created");
+    }, 1000);
+  });
+}
+
+// Chaining promises together
+fetchData()
+  .then((userData) => processUserData(userData))
+  .then((processedData) => saveToDatabase(processedData))
+  .then((finalResult) => console.log(`Step 4: ${finalResult}`))
+  .catch((error) => console.error("Error:", error)).finally(()=>{
+    console.log("operations is completed");
+  });
+
+//finally() method is used to specify code that should be executed regardless of whether the promise is
+// fulfilled or rejected... executes on success or failure and does not modify the code
+
+//Promise.all()
+
+const p1 = Promise.resolve(10);
+const p2 = Promise.resolve(20);
+const p3 = Promise.resolve(30);
+
+Promise.all([p1, p2, p3])
+  .then(results => console.log(results)) // Output: [10, 20, 30]
+  .catch(error => console.error(error));
+
+
+// Promise.all() takes an array of promises and waits for all of them to resolve. 
+// It returns a single promise that:
+
+// Resolves when all promises succeed (with an array of results).
+// Rejects if any promise fails (with the first error).
+
+// ✅ Best for parallel execution
+// ✅ If one fails, all fail
+
+// No results are returned if even one fails.
+// It stops executing further promises once a rejection happens.
+// Use Promise.allSettled() if you want all results, including failures.
+
+//Purpose of aync await 
+// the purpose of async/await is to simplify the syntax for working with promises,
+// Both async/await and .then() are used to handle asynchronous operations, 
+// but async/await makes the code more readable and easier to debug.
+
+// When using .then(), handling multiple promises can lead to 
+// callback chaining (Promise Hell), making code harder to read.
+
+fetch("https://jsonplaceholder.typicode.com/users/1")
+  .then(response => response.json())
+  .then(user => {
+    console.log("User:", user);
+    return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+  })
+  .then(response => response.json())
+  .then(posts => console.log("User Posts:", posts))
+  .catch(error => console.error("Error:", error));
+
+//   Nested .then() calls can get harder to manage.
+// Debugging is tricky since the call stack is harder to trace.
+
+// With async/await, we can write asynchronous code that looks like synchronous code.
+
+async function getUserData() {
+  try {
+    const userResponse = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    const user = await userResponse.json();
+    console.log("User:", user);
+    const postsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+    const posts = await postsResponse.json();
+    console.log("User Posts:", posts);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+getUserData();
+
+// Advantages of async/await: ✅ More readable (looks like synchronous code).
+// ✅ Easier error handling using try...catch.
+// ✅ Better debugging (stack traces are easier to follow).
+
+// The async keyword is used before a function to make it return a Promise automatically.
+// It ensures the function always returns a Promise, even if you return a simple value.
+
+// The await keyword can only be used inside async functions.
+// It pauses execution until the Promise is resolved, instead of using .then().
+// This makes the code look cleaner and more readable.
+
+// Promises vs async await 
+// 1. Async/await provides a more linear, synchronous looking code structure.
+// 2. Async/await use try/catch, which is more familiar for synchronous coed.
+// 3. Promises uses .then() for chaining, while async/await uses regular javascript flow.
+// 4. Async/await can be easier to debug as it behaves more like synchronous code.
+
+
