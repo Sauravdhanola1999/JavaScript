@@ -918,3 +918,28 @@ console.log(localStorage.getItem("isLoggedIn"))  // null
 localStorage.clear() // all data
 
 
+// Shallow Copy: A copy where only the first level of an object or array is duplicated, 
+// but nested objects still share references with the original.
+
+// Deep Copy: A copy where all levels of an object or array are completely duplicated,
+//  creating independent instances of nested objects.
+
+// Shallow Copy
+const obj1 = { name: "Alice", details: { age: 25 } };
+const obj2 = { ...obj1 }; // Shallow copy
+obj2.details.age = 30; // Changes original too
+
+// Deep Copy
+const obj3 = JSON.parse(JSON.stringify(obj1)); // Deep copy
+obj3.details.age = 40; // Doesn't affect original
+
+// Shallow Copy → Nested objects share memory.
+// Deep Copy → Nested objects are completely duplicated and independent.
+
+
+
+
+
+
+
+

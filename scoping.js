@@ -1,23 +1,18 @@
 
+const object = {
+  name: "Saurav",
+  details: {
+    age: 45,
+  },
+};
 
-const users = [
-  { id: 1, name: "Alice", age: 30 },
-  { id: 2, name: "Bob", age: 25 }
-]; 
+const newObject = JSON.parse(JSON.stringify(object));  // use spread operator for shallow copy
 
-// const updateUsers  = users.map((user)=>{
-//   return user.id ===1? {...user, name: "Charlie"} : user;
-// });
+newObject.name = "Dhanola";
+newObject.details.age = 34;
 
-// console.log(updateUsers);
+console.log(newObject);
+console.log(object);
 
-const updatedPerson = { ...users, name: "Charlie", city: "Los Angeles" };
 
-console.log(updatedPerson);
-/* Output:
-{
-  name: "Charlie",
-  age: 30,
-  city: "Los Angeles"
-}
-*/
+
