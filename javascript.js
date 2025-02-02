@@ -836,3 +836,85 @@ getUserData();
 // 4. Async/await can be easier to debug as it behaves more like synchronous code.
 
 
+// default and named exports 
+// A module can have multiple name exports but only one default export.
+//Named exports are imported using curly braces, while default exports are imported without using curly braces.
+// default exports can be imported with any name, while named exports must be imported imported with their exact names (unless renamed using 'as');
+
+// 📁 math.js
+export default function add(a, b) {
+  return a + b;
+}
+
+// 📁 main.js
+import sum from "./math.js"; // Can name it anything (e.g., `sum`)
+console.log(sum(5, 3)); // Output: 8
+
+// 📁 math.js
+export function add(a, b) {
+  return a + b;
+}
+
+export function subtract(a, b) {
+  return a - b;
+}
+
+// 📁 main.js
+import { add, subtract } from "./math.js"; // Must match the exact names
+console.log(add(10, 5)); // Output: 15
+console.log(subtract(10, 5)); // Output: 5
+
+import { add as sum, subtract as minus } from "./math.js";
+console.log(sum(10, 5)); // Output: 15
+console.log(minus(10, 5)); // Output: 5
+
+
+// Convert JS object to a JSON String
+
+const user = {
+  name: "John Doie",
+  age: 30,
+  isAdmin: false
+}
+
+const jsonString= JSON.stringify(user);
+console.log(jsonString);
+
+// local Storage is a web storage object that allows us to store key-value pairs in the browser 
+// with no expiration time
+
+localStorage.setItem('username', 'John Doe');
+localStorage.setItem('isAdmin', 'true');
+
+const user = localStorage.getItem('username');
+console.log(user);
+
+const user1 = {name: "vapour", age : 89};
+localStorage.setItem('user1', JSON.stringify(user));
+
+const storedUser = JSON.parse(localStorage.getItem('user'));
+console.log(storedUser.name);
+
+
+//local storage vs session storage 
+// both are web storage Objects, but they differe in data persistance.
+// localStorage data persists even after the browser is closed and responded.
+// sessionStorage data is cleared when the page session ends(i.e., when tab is closed).
+// both have the same API and are limited to storing string data
+
+localStorage.setItem(
+  "persistentData",
+  "This will remain after closing the browser"
+);
+
+sessionStorage.setItem(
+  "temporaryData",
+  "This will be cleared when the session ends"
+);
+
+// removing specific item
+localStorage.removeItem("isLoggedIn");
+console.log(localStorage.getItem("isLoggedIn"))  // null
+localStorage.clear() // all data
+
+
