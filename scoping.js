@@ -1,18 +1,18 @@
+const div = document.querySelector("div");
+const from = document.querySelector("form");
+const btn = document.querySelector("button");
 
-const object = {
-  name: "Saurav",
-  details: {
-    age: 45,
-  },
-};
+div.addEventListener("click", functin);
+from.addEventListener("click", functin);
+btn.addEventListener("click", functin);
 
-const newObject = JSON.parse(JSON.stringify(object));  // use spread operator for shallow copy
-
-newObject.name = "Dhanola";
-newObject.details.age = 34;
-
-console.log(newObject);
-console.log(object);
-
-
-
+function functin(event) {
+  alert(
+    "currentTarget = " +
+      event.currentTarget.tagName +
+      ", target =" +
+      event.target.tagName +
+      ", this=" +
+      this.tagName
+  );
+}

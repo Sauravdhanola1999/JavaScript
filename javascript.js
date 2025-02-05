@@ -937,6 +937,19 @@ obj3.details.age = 40; // Doesn't affect original
 // Deep Copy → Nested objects are completely duplicated and independent.
 
 
+//what is event- propagation
+//movements of events through the DOM and determines in which order 
+// the elements receive the event
+
+//what is event bubbling (Events travel upward after triggering the child event listener first) it's a default behaviour
+// When the Event Starts from the target element, it bubbles up through its parent elements all the way to the <html> element
+//Only elements with event listeners will react
+
+// difference between event.target vs this.target vs event.currentTarget
+
+
+//what is event capturing/ trickling
+
 
 
 
