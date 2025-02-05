@@ -7,23 +7,32 @@
     <title>Document</title>
 </head>
 <style>
-    body {
-        text-align: center;
-        font-family: monospace;
-        margin: 10px;
-        padding: 10px;
-        border: 1px solid red;
+    .products {
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-gap: 10px;
+    }
+    span {
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
 <body>
 
-    <div id="gparent">
-        div
-        <form id="parent">
-            <button id="child">Buttom</button>
-        </form>
+    <div class="products">
+        <span class="child">mobile</span>
+        <span class="child">Headphone</span>
+        <span class="child">laptop</span>
+        <span class="child">speaker</span>
+        <span class="child">USB Dock</span>
+        <span class="child">Tripod</span>
     </div>
+
 
     <script src="scoping.js"></script>
 </body>

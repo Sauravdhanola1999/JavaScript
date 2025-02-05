@@ -1,6 +1,8 @@
-const div = document.querySelector("div");
-const from = document.querySelector("form");
-const btn = document.querySelector("button");
+document.querySelector(".products").addEventListener("click", (event) => {
+  if (event.target.matches(".child")) {
+    console.log("Button Clicked: " + event.target.textContent);
+  }
+});
 
 // div.addEventListener("click", functin);
 // from.addEventListener("click", functin);
@@ -17,13 +19,13 @@ const btn = document.querySelector("button");
 //   );
 // }
 
-div.addEventListener("click", () => {
-  alert("div");
-});
-from.addEventListener("click", () => {
-  alert("from");
-});
-btn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  alert("button");
-});
+// div.addEventListener("click", () => {
+//   alert("div");
+// });
+// from.addEventListener("click", () => {
+//   alert("from");
+// });
+// btn.addEventListener("click", (e) => {
+//   e.stopPropagation();
+//   alert("button");
+// });

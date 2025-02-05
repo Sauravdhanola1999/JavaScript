@@ -1007,7 +1007,27 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
 
 
 // what is event Delegation?
+// Event Delegation is a technique where you attach a single event listener to 
+// a parent element instead of adding event listeners to multiple child elements
 
+// ✅ Efficient – Avoids adding multiple event listeners.
+// ✅ Handles Dynamic Elements – Works for elements added after page load.
+// ✅ Improves Performance – Uses fewer event listeners, reducing memory usage.
+
+<div class="products">
+<span class="child">mobile</span>
+<span class="child">Headphone</span>
+<span class="child">laptop</span>
+<span class="child">speaker</span>
+<span class="child">USB Dock</span>
+<span class="child">Tripod</span>
+</div>
+
+document.querySelector(".products").addEventListener("click", (event) => {
+  if (event.target.matches(".child")) {
+    console.log("Button Clicked: " + event.target.textContent);
+  }
+});
 
 
 
