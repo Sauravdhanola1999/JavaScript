@@ -945,10 +945,70 @@ obj3.details.age = 40; // Doesn't affect original
 // When the Event Starts from the target element, it bubbles up through its parent elements all the way to the <html> element
 //Only elements with event listeners will react
 
+document.getElementById("grandparent").addEventListener("click", function() {
+  console.log("Grandparent clicked");
+});
+
+document.getElementById("parent").addEventListener("click", function() {
+  console.log("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", function() {
+  console.log("Child clicked");
+});
+
 // difference between event.target vs this.target vs event.currentTarget
 
+function functin(event) {
+  alert(
+    "currentTarget = " +
+      event.currentTarget.tagName +
+      ", target =" +
+      event.target.tagName +
+      ", this=" +
+      this.tagName
+  );
+}
 
-//what is event capturing/ trickling
+//what is event capturing/ trickling 
+//The event starts at the top (<html>) and moves down the DOM tree to the target element.
+// 👉 The event starts at the root (#grandparent), moves down to #parent, 
+// and finally reaches #child before the target executes the event
+// the event is first captured by the outermost element and propagated to the inner elements
+
+div.addEventListener(
+  "click",
+  () => {
+    alert("div");
+  },
+  true
+);
+from.addEventListener(
+  "click",
+  () => {
+    alert("from");
+  },
+  true
+);
+btn.addEventListener(
+  "click",
+  () => {
+    alert("button");
+  },
+  true
+);
+
+// how to bubbling or capturing
+// only stops the event from bubbling up or capturing down the DOM tree
+document.getElementById("myForm").addEventListener("submit", function (event) {
+  event.stopPropagation(); // Stops bubbling, but NOT form submission
+  console.log("Form Submit Event Triggered");
+});
+
+
+// what is event Delegation?
+
+
 
 
 
