@@ -1,8 +1,12 @@
-const user = {
-  name: "John Doie",
-  age: 30,
-  isAdmin: false
+
+
+function reverseWords(str){
+  let reverseString= "";
+
+  for(let i=str.length-1; i>=0; i--){
+    reverseString+=str[i];
+  }
+  return reverseString;
 }
 
-const jsonString= JSON.stringify(user);
-console.log(jsonString);
+console.log(reverseWords("Welcome to this Javascript Guide!"));
