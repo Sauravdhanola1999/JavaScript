@@ -1029,10 +1029,71 @@ document.querySelector(".products").addEventListener("click", (event) => {
   }
 });
 
+// Using Object Literals (Most Common)
+
+const person = {
+  name: "John",
+  age: 35,
+  greet: function(){
+      console.log(`Hello My name is ${this.name}`);
+  }
+}
+person.greet();
+
+console.log(person.name);
+
+// this refers to the object that is calling the function
+// this.name will always refer to the name property of the current object
 
 
+// Using the new Object() Constructor
+
+const person = new Object();
+
+person.name = "Saurav";
+person.age = 16;
+person.education = "B.C.A";
+
+person.displayinfo = function () {
+  console.log(`My name is ${this.name} and i am ${this.age} old`);
+};
 
 
+person.displayinfo();
+
+// Using a Constructor Function (Traditional OOP)
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.greet = function() {
+    console.log(`Hi, I'm ${this.name}`);
+  };
+}
+
+const user = new Person("Alice", 25);
+console.log(user.name);  // Output: Alice
+user.greet();  // Output: Hi, I'm Alice
 
 
+// Manipulating properties 
+// const person = {
+//     name: "John",
+//     age: 35,
+//     greet: function(){
+//         console.log(`Hello My name is ${this.name} and ${this.age} old my ${this.profession}`);
+//     }
+// }
+// person.name ="Basha"
+// person["age"] = 67;// for changing dynamically;
+// console.log(person["age"]);
+// delete person.age;// shows udnefined 
+// console.log(person.age);
+// person.greet();
+// console.log(person.name);
+// Object.assign(person, { profession: "Developer", hobby: "Reading" });
+// person.greet();
+
+// The this keyword in JavaScript refers to the object that is executing the current function. 
+// Its value depends on how and where the function is called
 
