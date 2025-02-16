@@ -1097,3 +1097,9 @@ user.greet();  // Output: Hi, I'm Alice
 // The this keyword in JavaScript refers to the object that is executing the current function. 
 // Its value depends on how and where the function is called
 
+//Currying is a functional programming technique where a function does not take all arguments at once, but 
+// instead takes them one at a time and returns another function until all arguments are received
+
+// The concept of currying comes into play when you don't want to run the function until all 
+// the function parameters ain't available. 
+// A situation like this may arrive when you are taking data from different APIs.
