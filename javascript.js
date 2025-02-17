@@ -1103,3 +1103,49 @@ user.greet();  // Output: Hi, I'm Alice
 // The concept of currying comes into play when you don't want to run the function until all 
 // the function parameters ain't available. 
 // A situation like this may arrive when you are taking data from different APIs.
+
+function add(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    };
+  };
+}
+
+console.log(add(4)(6)(8));
+
+// call() methods allows an object to use the method(function) of another object;
+//apply() Similar to call(), but arguments are passed as an array.
+//bind() Returns a new function with this permanently bound to the given object.
+const person = {
+  name: "Saurav",
+  age: 29,
+};
+
+const person1 = {
+    name: "Vaibhav",
+    age: 16,
+  };
+  
+
+let printFullName = function (hometown) {
+  return `My Name is ${this.name} and My age is ${this.age} years ${hometown}`;
+};
+
+
+console.log(printFullName.call(person, "Dehradun"))
+console.log(printFullName.apply(person1, ["Mumbai"]))
+
+const x= printFullName.bind(person, "Hello");
+console.log(x);
+console.log(x());
+
+// call()	Function borrowing with separate arguments
+// apply()	Function borrowing with an array of arguments
+// bind()	Creating a new function with this pre-set (useful for event handlers & setTimeout)
+
+
+// JavaScript uses prototypes instead of traditional class-based inheritance (like in Java, C++, etc.). 
+// Objects in JavaScript can inherit properties and methods from other objects via their prototype
+
+// Objects in JavaScript have an internal reference (__proto__) that points to their prototype
