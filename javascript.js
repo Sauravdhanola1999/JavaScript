@@ -50,7 +50,7 @@ var sayHello = function() {
   console.log("Hello from expression!");
 };
 
-// Function expressions are not hoisted(tdz). Calling sayHello before its assignment results in a TypeError
+// Function expressions are not hoisted. Calling sayHello before its assignment results in a TypeError
 
 
 // Hoisting Behavior:
@@ -111,7 +111,8 @@ function functionScopeExample() {
 
 // Variables declared with var inside a function are function-scoped.
 // They are accessible only within the function in which they are defined and are not visible outside of it.
-// Function scope does not apply to let and const, as they are block-scoped
+// Function scope does not apply to let and const, as they are block-scoped.
+
 
 // Why is Scope Important?
 // Avoids Polluting the Global Namespace: Helps prevent variable name conflicts.
@@ -129,7 +130,7 @@ function functionScopeExample() {
 //shadowing occurs when a variable declared within a certain scope has the same name as a varibale declared in an outer scope. 
 // The Inner variable shadows the outer variable,meanining the outer variable is not accessible within the inner scope.
 
-//Illegal Shadowing haapens when this behavior violets the rules of scope resolution in JavaScript,
+//Illegal Shadowing happens when this behavior violets the rules of scope resolution in JavaScript,
 // espeically in let, const and var declarations
 
 let x = 10;
@@ -148,6 +149,7 @@ let x = 10;
 }
 
 console.log(x); // Prints 10
+
 
 let y = 30;
 
@@ -214,6 +216,7 @@ const greet = function geet(){
 greet();
 
 
+
 const factorial = function fact(n){
   if(n===0){
       return 1;
@@ -263,7 +266,6 @@ function add(a){
 //An IIFE is a JavaScript Function that runs as soon as it is defined. 
 // It is also known as a self-executing anonymous function
 //They are typically used to create a local scope for variables to prevent them from polluting the global scope
-
 (
   function greet(){
       console.log("Hello!")
@@ -374,7 +376,7 @@ console.log(evenNumbers); // Output: [2, 4]
 const numbers = [1, 2, 3, 4, 5];
 
 // Find the average using `reduce`
-const average = numbers.reduce((sum, num, index, array) => sum + num / array.length, 0);
+const average = numbers.reduce((sum, num, array) => sum + num / array.length, 0);
 console.log(average); // Output: 3
 
 
@@ -521,7 +523,7 @@ function sum(a, b) {
 // Arrow Functions are ideal for short, simple functions (like callbacks or inline functions), especially when you need to preserve the this context from the surrounding scope.
 // Normal Functions are better when you need a function to have its own this context, or if you need to work with the arguments object.
 
-// Destructuring is a way to extract multiple values from data store in objects and arrays
+// Destructuring is a way to extract multiple values from data stored in objects and arrays
 //Object deStructring
 
 
@@ -599,13 +601,11 @@ console.log(chars);
 
 
 // default parameters in ES6
-
 // default parameters allows us to set default value for function parameters if no value or undefined is passed
 
 function greet(name="guest"){
   console.log(`Hello ${name}`);
 };
-
 greet();
 greet("Saurv");
 
@@ -643,7 +643,7 @@ setTimeout(greet, 3000);
 // nested callbacks lead to pyramid structre known as pyramid of doom make the code complex
 
 //Inversion of control
-// By passing callbacks to other functions, developers lose control og the execution flow,
+// By passing callbacks to other functions, developers lose control of the execution flow,
 // relying on the external function
 
 //Using callback in nesting leads to callback hell and inversion of control 
@@ -684,7 +684,6 @@ step1(() => {
     });
   });
 });
-
 
 //Promise 
 // A promise is an object representing the eventual completion or failure of an asynchronous operations
@@ -831,7 +830,7 @@ getUserData();
 
 // Promises vs async await 
 // 1. Async/await provides a more linear, synchronous looking code structure.
-// 2. Async/await use try/catch, which is more familiar for synchronous coed.
+// 2. Async/await use try/catch, which is more familiar for synchronous code.
 // 3. Promises uses .then() for chaining, while async/await uses regular javascript flow.
 // 4. Async/await can be easier to debug as it behaves more like synchronous code.
 
@@ -880,7 +879,7 @@ const user = {
 const jsonString= JSON.stringify(user);
 console.log(jsonString);
 
-// local Storage is a web storage object that allows us to store key-value pairs in the browser 
+// local Storage is a web storage object that allows us to store data in key-value pairs in the browser 
 // with no expiration time
 
 localStorage.setItem('username', 'John Doe');
@@ -890,17 +889,17 @@ const user = localStorage.getItem('username');
 console.log(user);
 
 const user1 = {name: "vapour", age : 89};
-localStorage.setItem('user1', JSON.stringify(user));
+localStorage.setItem('user1', JSON.stringify(user1));
 
 const storedUser = JSON.parse(localStorage.getItem('user'));
 console.log(storedUser.name);
 
 
 //local storage vs session storage 
-// both are web storage Objects, but they differe in data persistance.
+// both are web storage Objects, but they difference in data persistance.
 // localStorage data persists even after the browser is closed and responded.
 // sessionStorage data is cleared when the page session ends(i.e., when tab is closed).
-// both have the same API and are limited to storing string data
+// both have the same API and are limited to storing storing data
 
 localStorage.setItem(
   "persistentData",
@@ -942,7 +941,7 @@ obj3.details.age = 40; // Doesn't affect original
 // the elements receive the event
 
 //what is event bubbling (Events travel upward after triggering the child event listener first) it's a default behaviour
-// When the Event Starts from the target element, it bubbles up through its parent elements all the way to the <html> element
+// When the Event Starts from the target element, it bubbles up through its parent elements to the root of the DOM
 //Only elements with event listeners will react
 
 document.getElementById("grandparent").addEventListener("click", function() {
@@ -959,7 +958,7 @@ document.getElementById("child").addEventListener("click", function() {
 
 // difference between event.target vs this.target vs event.currentTarget
 
-function functin(event) {
+function function(event) {
   alert(
     "currentTarget = " +
       event.currentTarget.tagName +
@@ -971,7 +970,7 @@ function functin(event) {
 }
 
 //what is event capturing/ trickling 
-//The event starts at the top (<html>) and moves down the DOM tree to the target element.
+//The event starts at the root element and moves down the DOM tree to the target element.
 // 👉 The event starts at the root (#grandparent), moves down to #parent, 
 // and finally reaches #child before the target executes the event
 // the event is first captured by the outermost element and propagated to the inner elements
@@ -1149,3 +1148,5 @@ console.log(x());
 // Objects in JavaScript can inherit properties and methods from other objects via their prototype
 
 // Objects in JavaScript have an internal reference (__proto__) that points to their prototype
+
+
