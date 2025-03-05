@@ -263,9 +263,10 @@ function add(a){
   return total; // returns value depends on external state
 }
 
-//An IIFE is a JavaScript Function that runs as soon as it is defined. 
-// It is also known as a self-executing anonymous function
-//They are typically used to create a local scope for variables to prevent them from polluting the global scope
+// An IIFE (Immediately Invoked Function Expression) is 
+// a function that runs immediately after it is defined
+// It is useful for creating a private scope and prevent varuiable conflicts
+//Variables inside IIFE don’t interfere with the global scope.
 (
   function greet(){
       console.log("Hello!")
@@ -798,7 +799,7 @@ fetch("https://jsonplaceholder.typicode.com/users/1")
   .then(posts => console.log("User Posts:", posts))
   .catch(error => console.error("Error:", error));
 
-//   Nested .then() calls can get harder to manage.
+//  Nested .then() calls can get harder to manage.
 // Debugging is tricky since the call stack is harder to trace.
 
 // With async/await, we can write asynchronous code that looks like synchronous code.
