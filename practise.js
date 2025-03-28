@@ -258,3 +258,27 @@ function repettedString(str){
 
 let str = "madamjii";
 repettedString(str);
+
+const person = {
+  name: "Saurav",
+  age: 29,
+};
+
+const person1 = {
+    name: "Vaibhav",
+    age: 16,
+  };
+  
+
+let printFullName = function (hometown) {
+  return `My Name is ${this.name} and My age is ${this.age} years ${hometown}`;
+};
+
+
+console.log(printFullName.call(person, "Dehradun"))
+console.log(printFullName.apply(person1, ["Mumbai"]))
+
+const x= printFullName.bind(person, "Hello");
+console.log(x);
+console.log(x());
+
